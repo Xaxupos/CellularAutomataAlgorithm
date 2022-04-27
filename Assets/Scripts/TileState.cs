@@ -1,5 +1,5 @@
 public enum TileState
 {
-    White,
-    Black
+    Alive,
+    Dead
 }

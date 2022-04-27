@@ -7,10 +7,9 @@ public class Tile : MonoBehaviour
 {
     [SerializeField] private TileState _tileState;
     [SerializeField] private TileDataSO _tileData;
-    [SerializeField] private Vector2 _gridPosition;
-
     [SerializeField] private List<Tile> _neighborTiles = new List<Tile>();
 
+    private Vector2 _gridPosition;
     private Image _tileImage;
 
     private void Awake()
@@ -40,9 +39,23 @@ public class Tile : MonoBehaviour
         _neighborTiles.Add(tile);
     }
 
+    public void ChangeTileState()
+    {
+        _tileState = _tileState == TileState.Dead ? _tileState = TileState.Alive : _tileState = TileState.Dead;
+
+        if(_tileState == TileState.Alive)
+        {
+            _tileImage.sprite = _tileData.WhiteSprite;
+        }
+        else
+        {
+            _tileImage.sprite = _tileData.BlackSprite;
+        }
+    }
+
     private void SetIntialValues()
     {
         _tileImage.sprite = _tileData.BlackSprite;
-        _tileState = TileState.Black;
+        _tileState = TileState.Dead;
     }
 }
