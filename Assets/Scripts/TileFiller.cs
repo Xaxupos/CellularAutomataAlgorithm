@@ -5,7 +5,6 @@ public class TileFiller : MonoBehaviour
     [SerializeField] private GameObject _tilePrefab;
 
     private RectTransform _rectTransform;
-    private Tile[,] _tileArray;
 
     private void Awake()
     {
@@ -22,7 +21,7 @@ public class TileFiller : MonoBehaviour
         float width = _rectTransform.sizeDelta.x;
         float height = _rectTransform.sizeDelta.y;
 
-        _tileArray = new Tile[(int)width, (int)height];
+        GenerationManager.Instance.TileArray = new Tile[(int)width, (int)height];
 
         int columns = (int)width / 10;
         int rows = (int)height / 10;
@@ -32,12 +31,12 @@ public class TileFiller : MonoBehaviour
             for (int y = 0; y < columns; y++)
             {
                 var tile = Instantiate(_tilePrefab, this.transform);
-                _tileArray[x, y] = tile.GetComponent<Tile>();
+                GenerationManager.Instance.TileArray[x, y] = tile.GetComponent<Tile>();
                 tile.GetComponent<Tile>().SetGridPosition(new Vector2(x, y));
             }
         }
 
-        AssignNeighbors(columns, rows, _tileArray);
+        AssignNeighbors(columns, rows, GenerationManager.Instance.TileArray);
     }
 
     private static void AssignNeighbors(int columns, int rows, Tile[,] tileArray)

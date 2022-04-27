@@ -32,11 +32,21 @@ public class Tile : MonoBehaviour
         _gridPosition = pos;
     }
 
+    public List<Tile> GetNeighbors()
+    {
+        return _neighborTiles;
+    }
+
     public void AddNeighborTile(Tile tile)
     {
         if(_neighborTiles.Contains(tile)) return;
 
         _neighborTiles.Add(tile);
+    }
+
+    public TileState GetTileState()
+    {
+        return _tileState;
     }
 
     public void ChangeTileState()
