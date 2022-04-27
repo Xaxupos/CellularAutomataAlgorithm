@@ -1,9 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Image))]
-public class Tile : MonoBehaviour
+public class Tile : MonoBehaviour, IPointerEnterHandler
 {
     [SerializeField] private TileState _tileState;
     [SerializeField] private TileDataSO _tileData;
@@ -44,6 +45,19 @@ public class Tile : MonoBehaviour
         _neighborTiles.Add(tile);
     }
 
+    public void SetTileState(TileState state)
+    {
+        _tileState = state;
+        if (_tileState == TileState.Alive)
+        {
+            _tileImage.sprite = _tileData.WhiteSprite;
+        }
+        else
+        {
+            _tileImage.sprite = _tileData.BlackSprite;
+        }
+    }
+
     public TileState GetTileState()
     {
         return _tileState;
@@ -67,5 +81,13 @@ public class Tile : MonoBehaviour
     {
         _tileImage.sprite = _tileData.BlackSprite;
         _tileState = TileState.Dead;
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if(PaintingManager.Instance.IsHolding)
+        {
+            this.ChangeTileState();
+        }
     }
 }

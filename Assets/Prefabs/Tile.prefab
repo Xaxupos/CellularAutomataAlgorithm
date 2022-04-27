@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 8959515815589771572}
   - component: {fileID: 2261837978500332640}
   - component: {fileID: 2273830303017005839}
-  - component: {fileID: -215689176709895613}
   m_Layer: 0
   m_Name: Tile
   m_TagString: Tile
@@ -92,15 +91,3 @@ MonoBehaviour:
   _tileState: 1
   _tileData: {fileID: 11400000, guid: d8e4bba9094333f4bbb48a5bf7f70cf9, type: 2}
   _neighborTiles: []
---- !u!114 &-215689176709895613
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4214137670801295150}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f77f59e295d4864e9b588304027b8d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
