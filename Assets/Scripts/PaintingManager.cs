@@ -13,14 +13,6 @@ public class PaintingManager : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetMouseButtonDown(0))
-        {
-            IsHolding = true;
-        }
-        if(Input.GetMouseButtonUp(0))
-        {
-            IsHolding = false;
-        }
+        IsHolding = Input.GetMouseButton(0);
     }
-
 }
